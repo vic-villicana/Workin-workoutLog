@@ -1,4 +1,4 @@
-const workys = require('../database/getworkouts')
+const workys = require('../database/workouts')
 
 const getAllWorkouts =  () => {
     const getit = workys.getWorkouts()
