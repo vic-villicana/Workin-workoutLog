@@ -2,39 +2,13 @@ require("dotenv").config();
 const express = require("express");
 const app = express()
 const cors = require("cors")
-const db = require("./db");
+const db = require("./db")
+const v1routes = require('./src/v1/routes/workoutRoutes.js')
 
 app.use(cors())
 app.use(express.json())
 
-app.get('/allexercises', async(req, res) => {
-  
-})
-
-app.get("/workoutlogs/:id", async (req, res) => {
-   
-})    
-
-app.get("/myworkouts", async (req, res) => {
-  
-    
-})
-
-app.get("/myworkouts/:id", async (req, res) => {
-    
-})
-
-app.post("/myworkouts", async (req, res) => {
-    
-})
-
-app.put("/myworkouts/:id", async(req, res) => {
-    
-})
-
-app.delete("/myworkouts/:id", (req, res) => {
-
-})
+app.use('/v1', v1routes);
 
 const port = process.env.PORT
 app.listen(port, () => {
