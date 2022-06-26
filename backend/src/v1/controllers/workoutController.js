@@ -10,8 +10,13 @@ const getMyWorkouts = async (req, res) => {
     })
 }
 
-const getOneWorkout = (req, res) => {
-    res.send('got one woorkout routine')
+const getOneWorkout = async (req, res) => {
+    const getOne = await workoutService.getOneWorkout(req)
+
+    res.status(201).json({
+        status:"success",
+        results:getOne.rows
+    })
 }
 
 const createOneWorkout = (req, res) => {

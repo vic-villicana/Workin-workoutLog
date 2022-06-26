@@ -6,6 +6,13 @@ const getAllWorkouts =  () => {
     return getit
 }
 
+const getOneWorkout = (req) => {
+    const getOne = workys.getOneWorkout(req)
+    
+    return getOne
+}
+
 module.exports = {
-    getAllWorkouts
+    getAllWorkouts,
+    getOneWorkout
 }

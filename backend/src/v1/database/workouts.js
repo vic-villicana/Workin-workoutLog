@@ -6,4 +6,13 @@ const getWorkouts = async () => {
     return response
 }
 
-module.exports = {getWorkouts}
+const getOneWorkout = async (req) => {
+    const response = await db.query('SELECT myexercises.id as theid, exercises.name, exercises.description, exercises.id, mgroup FROM myexercises JOIN exercises ON exercises.id = myexercises.exercise_id JOIN routines ON routines.id = myexercises.routine_id WHERE myexercises.routine_id = $1', 
+    [req.params.id])
+    return response
+}
+
+module.exports = {
+    getWorkouts,
+    getOneWorkout
+}
