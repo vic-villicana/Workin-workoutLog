@@ -1,5 +1,13 @@
-const getMyWorkouts = (req, res) => {
-    res.send('we got the workouts')
+const workoutService = require('../services/workoutService')
+
+const getMyWorkouts = async (req, res) => {
+    const gotIt = await workoutService.getAllWorkouts()
+    console.log(gotIt)
+    // res.send({status:'fantastic0', data: gotIt})
+    res.status(200).json({
+        status:"success",
+        results:gotIt.rows
+    })
 }
 
 const getOneWorkout = (req, res) => {
