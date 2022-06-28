@@ -11,7 +11,7 @@ router.post('/myworkouts', workoutController.createOneWorkout)
 
 router.patch('/myworkouts/:id', workoutController.updatedAWorkout)
 
-router.delete('/myworkouts/:id', workoutController.deleteAWorkout)
+router.delete('/myworkouts/:id', workoutController.deleteOneWorkout)
 
 router.get('/workoutlogs/:id', workoutController.getWorkoutLog)
 

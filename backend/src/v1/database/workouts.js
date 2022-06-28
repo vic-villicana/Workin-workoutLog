@@ -12,13 +12,21 @@ const getOneWorkout = async (req) => {
     return response
 }
 
+const deleteOneWorkout = async (req) => {
+    const response = db.query('DELETE FROM routines WHERE id = $1', [req.params.id])
+     return response
+}
+
 const getWorkoutLog = async (req) => {
     const response = db.query('SELECT * FROM myworkoutlog WHERE myexercises_id = $1', [req.params.id])
     return response
 }
 
+
+
 module.exports = {
     getWorkouts,
     getOneWorkout,
-    getWorkoutLog
+    getWorkoutLog,
+    deleteOneWorkout
 }

@@ -27,9 +27,15 @@ const updatedAWorkout = (req, res) => {
     res.send('updated a workout')
 }
 
-const deleteAWorkout = (req, res) => {
-    res.send('delete a workout')
+const deleteOneWorkout = async (req, res) => {
+    const response = await workoutService.deleteOneWorkout(req)
+    res.status(200).json({
+        status:'success',
+        results:response
+    })
+    
 }
+
 const getWorkoutLog = async (req, res) => {
     const getLog = await workoutService.getWorkoutLog(req)
     
@@ -46,6 +52,6 @@ module.exports = {
     getOneWorkout,
     createOneWorkout,
     updatedAWorkout,
-    deleteAWorkout,
+    deleteOneWorkout,
     getWorkoutLog
 }
