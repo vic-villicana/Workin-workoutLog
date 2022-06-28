@@ -30,8 +30,13 @@ const updatedAWorkout = (req, res) => {
 const deleteAWorkout = (req, res) => {
     res.send('delete a workout')
 }
-const getWorkoutLog = (req, res) => {
-    res.send('got it')
+const getWorkoutLog = async (req, res) => {
+    const getLog = await workoutService.getWorkoutLog(req)
+    
+    res.status(201).json({
+        status:'Success',
+        results:getLog.rows
+    })
 }
 
 

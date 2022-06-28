@@ -12,7 +12,13 @@ const getOneWorkout = async (req) => {
     return response
 }
 
+const getWorkoutLog = async (req) => {
+    const response = db.query('SELECT * FROM myworkoutlog WHERE myexercises_id = $1', [req.params.id])
+    return response
+}
+
 module.exports = {
     getWorkouts,
-    getOneWorkout
+    getOneWorkout,
+    getWorkoutLog
 }

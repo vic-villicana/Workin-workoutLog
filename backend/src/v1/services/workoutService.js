@@ -12,7 +12,13 @@ const getOneWorkout = (req) => {
     return getOne
 }
 
+const getWorkoutLog = (req) => {
+    const result = workys.getWorkoutLog(req)
+    return result
+}
+
 module.exports = {
     getAllWorkouts,
-    getOneWorkout
+    getOneWorkout,
+    getWorkoutLog
 }
