@@ -12,6 +12,11 @@ const getOneWorkout = async (req) => {
     return response
 }
 
+const createOneWorkout = (req) => {
+    const response = db.query("INSERT INTO routines (name, description) VALUES ($1, $2)", [req.body.name, req.body.description])
+    return response
+}
+
 const deleteOneWorkout = async (req) => {
     const response = db.query('DELETE FROM routines WHERE id = $1', [req.params.id])
      return response
@@ -28,5 +33,6 @@ module.exports = {
     getWorkouts,
     getOneWorkout,
     getWorkoutLog,
-    deleteOneWorkout
+    deleteOneWorkout,
+    createOneWorkout
 }

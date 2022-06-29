@@ -11,6 +11,12 @@ const getOneWorkout = (req) => {
     
     return getOne
 }
+
+const createOneWorkout = (req) => {
+    const postIt = workys.createOneWorkout(req)
+    return postIt
+}
+
 const deleteOneWorkout = (req) => {
     workys.deleteOneWorkout(req)
 }
@@ -24,5 +30,6 @@ module.exports = {
     getAllWorkouts,
     getOneWorkout,
     getWorkoutLog,
-    deleteOneWorkout
+    deleteOneWorkout,
+    createOneWorkout
 }
