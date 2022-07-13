@@ -7,29 +7,60 @@ const getAllWorkouts =  () => {
 }
 
 const getOneWorkout = (req) => {
-    const getOne = workys.getOneWorkout(req)
+    try{
+        const getOne = workys.getOneWorkout(req)
     
-    return getOne
+        return getOne
+    }catch(err){
+        throw err
+    }
 }
 
 const createOneWorkout = (req) => {
-    const postIt = workys.createOneWorkout(req)
-    return postIt
+
+    try{
+        const postIt = workys.createOneWorkout(req)
+        return postIt
+    }catch(err){
+        //throw errors at the service layer to handle at the controller layer
+       throw err
+    }
+ 
 }
 
 const deleteOneWorkout = (req) => {
-    workys.deleteOneWorkout(req)
+    try{
+        workys.deleteOneWorkout(req)
+    }catch(err){
+        throw err
+    }
+    
 }
 
 const getWorkoutLog = (req) => {
-    const result = workys.getWorkoutLog(req)
-    return result
+    try{
+        const result = workys.getWorkoutLog(req)
+        return result
+    }catch(err){
+        throw err
+    }
+ 
+}
+
+const createWorkoutLog = (req) => {
+    try{
+        const result = workys.createWorkoutLog(req)
+        return result
+    }catch(err){
+        throw err
+    }
 }
 
 module.exports = {
     getAllWorkouts,
     getOneWorkout,
-    getWorkoutLog,
     deleteOneWorkout,
-    createOneWorkout
+    createOneWorkout,
+    getWorkoutLog,
+    createWorkoutLog
 }

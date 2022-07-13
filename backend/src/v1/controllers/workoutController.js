@@ -2,7 +2,7 @@ const workoutService = require('../services/workoutService')
 
 const getMyWorkouts = async (req, res) => {
     const gotIt = await workoutService.getAllWorkouts()
-    console.log(gotIt)
+  
     // res.send({status:'fantastic0', data: gotIt})
     res.status(200).json({
         status:"success",
@@ -11,20 +11,61 @@ const getMyWorkouts = async (req, res) => {
 }
 
 const getOneWorkout = async (req, res) => {
-    const getOne = await workoutService.getOneWorkout(req)
+    const {
+        params: {id}
+    } = req
 
-    res.status(201).json({
-        status:"success",
-        results:getOne.rows
-    })
+    if(!id){
+        res.status(400).json({
+            status: "Failed",
+            data: {error: "Parameter: 'id' can not be empty"}
+        })
+    }else{
+        try {
+            const getOne = await workoutService.getOneWorkout(req)
+            res.status(200).json({
+            status:"success",
+            results:getOne.rows
+        })}catch(err){
+            
+            res.status(err?.status || 500).json({
+                status:"Failed",
+                data:{
+                    error: err?.message || err
+                }
+            })
+        }
+    }
+
+
 }
 
 const createOneWorkout = async(req, res) => {
-    const response = workoutService.createOneWorkout(req)
-    res.status(201).json({
-        status:'create successful',
-        result:response
-    })
+  
+    if(!req.body.name || !req.body.description){
+        res.status(400).json({
+            status:'Failed',
+            data: {
+                Error:"One of the following keys is missing : 'name', 'description'"
+            }
+        })
+    }else{
+        try{
+            const response = workoutService.createOneWorkout(req)
+            res.status(201).json({
+                status:'create successful',
+                result:response.rows
+            })
+        }catch(err){
+            res.status(500).json({
+                status:"Failed",
+                data:{
+                    error:(err.message || "Server took too long to respond")
+                }
+            })
+        }
+    }
+    
 }   
 
 const updatedAWorkout = (req, res) => {
@@ -32,24 +73,60 @@ const updatedAWorkout = (req, res) => {
 }
 
 const deleteOneWorkout = async (req, res) => {
-    const response = await workoutService.deleteOneWorkout(req)
-    res.status(200).json({
-        status:'success',
-        results:response
-    })
+    try{
+        const response = await workoutService.deleteOneWorkout(req)
+        res.status(204).json({
+        status:'ok',
+        
+        })
+    }catch(err){
+        res.status(err?.status || 500).json({
+            status:"failed",
+            data:{error:err?.message || err}
+        })
+    }
     
 }
 
 const getWorkoutLog = async (req, res) => {
-    const getLog = await workoutService.getWorkoutLog(req)
+    try{
+        const getLog = await workoutService.getWorkoutLog(req)
     
-    res.status(201).json({
-        status:'Success',
-        results:getLog.rows
-    })
+        res.status(201).json({
+            status:'Success',
+            results:getLog.rows
+        })
+    }catch(err) {
+        res.status(err?.status || 500).json({
+            status:'Failed',
+            data:{error: err?.message || err}
+        })
+    }
+    
 }
 
+const createWorkoutLog = async(req, res) => {
+    const {weight, reps, id} = req.body
 
+    if(!reps || !id){
+        res.status(400).json({
+            status:"Failed",
+            data:{error: "one of the following keys are missing: 'reps', 'id'"}
+        })
+    }
+    try{
+        const result = await workoutService.createWorkoutLog(req)
+        res.status(201).json({
+            status:"success",
+            data:result.rows
+        })
+    }catch(err){
+        res.status(err?.status || 500).json({
+            status:"Failed",
+            data:{error: err?.message || err}
+        })
+    }
+}
 
 module.exports = {
     getMyWorkouts,
@@ -57,5 +134,6 @@ module.exports = {
     createOneWorkout,
     updatedAWorkout,
     deleteOneWorkout,
-    getWorkoutLog
+    getWorkoutLog,
+    createWorkoutLog
 }
