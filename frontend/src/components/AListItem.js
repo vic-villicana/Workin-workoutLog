@@ -14,7 +14,7 @@ class AListItem extends React.Component{
     componentDidMount(){
         const getLogs = async () => {
             try{
-                const response = await workoutFinder(`/workoutlogs/${this.props.theId}`)
+                const response = await workoutFinder(`v1/workoutlogs/${this.props.theId}`)
                 this.setState({log:response.data.results.rows})
             }catch(e){
                 console.log(e)
@@ -65,13 +65,14 @@ class AListItem extends React.Component{
             return(
                 <div>
                     <ListItem 
-                     keyes={this.props.keyed}
-                     name={this.props.name}
-                     group={this.props.group} 
-                     img={this.props.img} 
-                     setExe={this.props.setExe}
-                     imgSz={this.props.imgSz}
-                     description={this.props.description}
+                        key={this.props.keyed+1}
+                        keyes={this.props.keyed}
+                        name={this.props.name}
+                        group={this.props.group} 
+                        img={this.props.img} 
+                        setExe={this.props.setExe}
+                        imgSz={this.props.imgSz}
+                        description={this.props.description}
                     />
                     {this.renderSform()}
                 </div>

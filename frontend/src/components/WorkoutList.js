@@ -27,9 +27,9 @@ class WorkoutList extends React.Component{
 
         const getroutines = async () => {
             try{
-                const response = await workoutFinder.get('/myworkouts')
-                console.log(response)
-                this.setState({routines:response.data.data.routines})
+                const response = await workoutFinder.get('/v1/myworkouts')
+                console.log(response.data.results)
+                this.setState({routines:response.data.results})
                 
             }catch(e){
                 console.log(e)
@@ -42,9 +42,9 @@ class WorkoutList extends React.Component{
     }
 
     async listOut(id){
-        const exercises = await workoutFinder.get(`/myworkouts/${id}`)
-        console.log(exercises)
-        this.setState({isROpen:true, routineId:id, exercises:exercises.data.data.exercises})
+        const exercises = await workoutFinder.get(`/v1/myworkout/${id}`)
+        console.log(exercises.data.results)
+        this.setState({isROpen:true, routineId:id, exercises:exercises.data.results})
     }
 
     openExe(id){
@@ -55,7 +55,7 @@ class WorkoutList extends React.Component{
 
     async submitSet({id, reps, weight}){
         try{
-            const response = await workoutFinder.post(`/myworkouts`, {
+            const response = await workoutFinder.post(`/v1/workoutlog`, {
                 id:id,
                 reps:reps,
                 weight:weight
