@@ -16,8 +16,8 @@ const appMenu = [
         img:clean
     },
     {
-        name:"All Workouts",
-        href:"/allexercises",
+        name:"Create Workout",
+        href:"/createworkout",
         img:weight
     },
     {

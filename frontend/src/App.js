@@ -13,7 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="myworkouts" element={<MyWorkouts/>} />
-          <Route path="createRoutine" element={<CreateRoutine />}/>
+          <Route path="createworkout" element={<CreateRoutine />}/>
           <Route path="allexercises" element={<AllExercises />} />
           <Route path="*" element={<h1>404 Page Does Not Exist</h1>} />    
         </Routes> 
