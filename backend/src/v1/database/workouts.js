@@ -26,9 +26,10 @@ const getOneWorkout = async (req) => {
         
 }
 
-const createOneWorkout = (req) => {
+const createOneWorkout = async (req) => {
     try{
-        const response = db.query("INSERT INTO routines (name, description) VALUES ($1, $2)", [req.body.name, req.body.description])
+        const response = await db.query("INSERT INTO routines (name, description) VALUES ($1, $2) RETURNING id", [req.body.name, req.body.description])
+        
         return response
     }catch(err){
         throw {status: 500, message: err?.message || err}

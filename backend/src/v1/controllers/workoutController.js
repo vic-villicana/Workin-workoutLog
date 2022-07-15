@@ -51,10 +51,10 @@ const createOneWorkout = async(req, res) => {
         })
     }else{
         try{
-            const response = workoutService.createOneWorkout(req)
+            const response = await workoutService.createOneWorkout(req)
             res.status(201).json({
                 status:'create successful',
-                result:response.rows
+                result:response.rows[0]
             })
         }catch(err){
             res.status(500).json({
