@@ -5,8 +5,8 @@ import RoutineForm from '../components/RoutineForm'
 import workoutFinder from '../api/workoutFinder'
 
 const CreateRoutine = () => {
-    // const [name, setName] = useState("")
-    // const [description, setDescription] = useState("")
+    const [name, setName] = useState("")
+    const [description, setDescription] = useState("")
     const [routineId, setRoutineId] = useState()
     const [listOpen, setListOpen] = useState(false)
 
@@ -25,7 +25,10 @@ const CreateRoutine = () => {
             name:name,
             description:description
         })        
+        console.log(response.data)
         setRoutineId(response.data.result.id)
+        setName(response.data.result.name)
+        setDescription(response.data.result.description)
         setListOpen(true)
        
         }catch(err){
@@ -37,7 +40,7 @@ const CreateRoutine = () => {
     return(
         <div className="routinepage-container">
             
-            {listOpen ? <RoutineList routineId={routineId}/> : <RoutineForm submitRoutine={submitRoutine} />}
+            {listOpen ? <RoutineList name={name} description={description} routineId={routineId}/> : <RoutineForm submitRoutine={submitRoutine} />}
           
         </div>
     )

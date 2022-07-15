@@ -28,7 +28,7 @@ const getOneWorkout = async (req) => {
 
 const createOneWorkout = async (req) => {
     try{
-        const response = await db.query("INSERT INTO routines (name, description) VALUES ($1, $2) RETURNING id", [req.body.name, req.body.description])
+        const response = await db.query("INSERT INTO routines (name, description) VALUES ($1, $2) RETURNING *", [req.body.name, req.body.description])
         
         return response
     }catch(err){
