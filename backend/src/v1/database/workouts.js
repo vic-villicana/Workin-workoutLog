@@ -68,6 +68,16 @@ const createWorkoutLog = async (req) => {
     }
 }
 
+const getExercises = async () => {
+    try{
+        const response = await db.query('SELECT * FROM exercises')
+        console.log( response)
+        return response
+    }catch(err) {
+        console.log(err)
+    }
+}
+
 
 
 module.exports = {
@@ -76,5 +86,6 @@ module.exports = {
     createOneWorkout,
     deleteOneWorkout,
     getWorkoutLog,
-    createWorkoutLog
+    createWorkoutLog,
+    getExercises
 }

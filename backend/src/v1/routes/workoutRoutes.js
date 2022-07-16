@@ -17,4 +17,6 @@ router.get('/workoutlogs/:id', workoutController.getWorkoutLog)
 
 router.post('/workoutlog', workoutController.createWorkoutLog)
 
+router.get('/exercises', workoutController.getExercises)
+
 module.exports = router;

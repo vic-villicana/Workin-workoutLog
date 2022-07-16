@@ -1,14 +1,14 @@
-const workys = require('../database/workouts')
+const workouts = require('../database/workouts')
 
 const getAllWorkouts =  () => {
-    const getit = workys.getWorkouts()
+    const getit = workouts.getWorkouts()
 
     return getit
 }
 
 const getOneWorkout = (req) => {
     try{
-        const getOne = workys.getOneWorkout(req)
+        const getOne = workouts.getOneWorkout(req)
     
         return getOne
     }catch(err){
@@ -19,7 +19,7 @@ const getOneWorkout = (req) => {
 const createOneWorkout = (req) => {
 
     try{
-        const postIt = workys.createOneWorkout(req)
+        const postIt = workouts.createOneWorkout(req)
         return postIt
     }catch(err){
         //throw errors at the service layer to handle at the controller layer
@@ -30,7 +30,7 @@ const createOneWorkout = (req) => {
 
 const deleteOneWorkout = (req) => {
     try{
-        workys.deleteOneWorkout(req)
+        workouts.deleteOneWorkout(req)
     }catch(err){
         throw err
     }
@@ -39,7 +39,7 @@ const deleteOneWorkout = (req) => {
 
 const getWorkoutLog = (req) => {
     try{
-        const result = workys.getWorkoutLog(req)
+        const result = workouts.getWorkoutLog(req)
         return result
     }catch(err){
         throw err
@@ -49,10 +49,20 @@ const getWorkoutLog = (req) => {
 
 const createWorkoutLog = (req) => {
     try{
-        const result = workys.createWorkoutLog(req)
+        const result = workouts.createWorkoutLog(req)
         return result
     }catch(err){
         throw err
+    }
+}
+
+const getExercises = () => {
+    try{
+        const result = workouts.getExercises()
+      
+        return result
+    }catch(err) {
+        console.log(err)
     }
 }
 
@@ -62,5 +72,6 @@ module.exports = {
     deleteOneWorkout,
     createOneWorkout,
     getWorkoutLog,
-    createWorkoutLog
+    createWorkoutLog,
+    getExercises
 }
