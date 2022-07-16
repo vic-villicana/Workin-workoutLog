@@ -1,8 +1,8 @@
 import {useState} from 'react'
-import AllExercises from '../AllExercises'
+import AllExercises from './Exercises'
 
 const RoutineList = (props) => {
-  
+ 
     return(
         <>
             <div className="playlist-container">
@@ -13,11 +13,11 @@ const RoutineList = (props) => {
                     </p>
                 </div>
                 <div className="routine-playlist">
-
+                    
                 </div>
                 <button className="btn">Set</button>
             </div>
-            <AllExercises />
+            <AllExercises exercises={props.exercises} setterFunc={props.groupSetter} />
         </>
 
     )

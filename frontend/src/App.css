@@ -183,6 +183,13 @@ img{
     /*---create routine---*/
     /*---create routine---*/
 
+    .routinepage-container{
+      margin-top:5em; 
+      display:flex;
+      flex-direction:column;
+      align-items: center;
+    }
+
     .create-routine{
       position:relative;
       height:100vh;
@@ -229,6 +236,52 @@ img{
     border-radius:9px;
     margin:0 auto;
   }
-    
 
+  /*---create routine List---*/
+  /*---create routine List---*/
+  /*---create routine List---*/
+
+  .routine-header h2{
+    text-align:center;
+  
+  }
+  .routine-header{
+    max-width:255px;
+    margin:0 auto;
+
+  }
+  .playlist-container{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .routine-playlist{
+    margin:2.5em 0 2.5em 0;
+  }
+  
+  /*---All exercises---*/
+  /*---All exercises---*/
+  /*---All exercises---*/
+  
+  
+  .all-exercises{
+    max-width:350px;
+    margin:2.5em 0 0 0;
+
+  }
+  .exercise-list{
+    margin:2em 0 0 0;
+    width:100%;
+    height:auto;
+  }
+
+
+  .exercise-box{
+    display:flex;
+    flex-direction: row;
+  }
+  .exercises-text-box{
+
+  }
 }
