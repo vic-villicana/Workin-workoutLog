@@ -2,7 +2,7 @@ import './App.css';
 import Home from './Home'
 import MyWorkouts from './MyWorkouts'
 import CreateRoutine from './pages/CreateRoutine'
-import AllExercises from './AllExercises'
+import AllExercises from './components/AllExercises'
 
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 function App() {
