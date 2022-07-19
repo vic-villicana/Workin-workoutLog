@@ -16,6 +16,14 @@
 
   }
 
+  .bold{
+    font-weight:bold;
+  }
+
+  .cap{
+    text-transform: capitalize;
+  }
+
   .main{
     height:auto;
   }
@@ -53,6 +61,29 @@ img{
   height:100%;
   background-position:center;
   background-size:cover;
+}
+
+/*---animations----*/
+/*---animations----*/
+/*---animations----*/
+
+.listt-enter {
+  opacity: 0.01;
+  transform:translate(0, -10px)
+}
+
+.listt-enter.listt-enter-active {
+  opacity: 1;
+  transform:translate(0,0);
+  transition: all 300ms ease-in;
+}
+.listt-exit {
+  opacity: 1;
+  transform: translate(0,0)
+}
+.listt-exit.listt-exit-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
 }
 
 .card img{
@@ -280,8 +311,38 @@ img{
   .exercise-box{
     display:flex;
     flex-direction: row;
+    margin-bottom:2.5em;
   }
-  .exercises-text-box{
+  .exercise-text-box h3{
+    margin-bottom:.25em;
+  }
 
+  .exercise-text-box p{
+    margin-bottom:.25em;
+  }
+
+  .exercise-text-box{
+    margin:0;
+    box-sizing:border-box;
+    max-width:275px;
+  }
+
+  .add-exe{
+    margin-right:1em;
+    font-size:140%;
+  }
+  .add-exe i{
+    color:#26EB61;
+   
+  }
+
+  .min-exe {
+    margin-right:1em;
+    font-size:140%
+  }
+
+  .min-exe i{
+    color:rgb(255, 68, 16);
   }
 }
+

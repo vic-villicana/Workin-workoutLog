@@ -3,16 +3,16 @@ import Dropdown from './Dropdown'
 
 const Exercises = (props) => {
 
-    console.log(props)
+  console.log(props)
         const allExercises = props.exercises.map(exe => {
             return(
-                <div className="exercise-box">
-                    <button className="add-btn" onClick={() => props.setExe(props.keyes)}>
+                <div className="exercise-box" key={exe.id}>
+                    <button className="add-btn add-exe" onClick={() => props.addExercise({id:exe.id, name:exe.name, description:exe.description, group:exe.mgroup})}>
                        <i className="plus circle icon"></i>
                     </button>
                     <div className="exercise-text-box">
-                        <h4 >{exe.name}</h4>
-                        <p>Muscle Group: <span className="bold">{exe.mgroup}</span></p>
+                        <h3>{exe.name}</h3>
+                        <p>Muscle Group: <span className="bold cap">{exe.mgroup}</span></p>
                         <p>{exe.description}</p>
                     </div>
                 </div>

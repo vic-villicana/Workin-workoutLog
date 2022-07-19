@@ -11,6 +11,7 @@ const CreateRoutine = () => {
     const [listOpen, setListOpen] = useState(false)
     const [exercises, setExercises] = useState()
     const [group, setGroup] = useState()
+    const [playlist, setPlaylist] = useState([])
 
     useEffect(() => {
         const request = () => {
@@ -73,7 +74,6 @@ const CreateRoutine = () => {
     
 
     const getAllExercises = async () => {
-    
             try{
                 const response = await workoutFinder.get(`/v1/exercises`)
                 console.log(response.data.results)
@@ -82,12 +82,20 @@ const CreateRoutine = () => {
                 console.log(err)
             }
     }
-    console.log(exercises)
+
+    const addExercise = (object) => {
+            const arr = new Array(...playlist)
+
+            arr.push(object)
+            setPlaylist(arr)
+       
+            console.log(arr)           
+    }
+
+    console.log(playlist)
     return(
         <div className="routinepage-container">
-            
-            {listOpen ? <RoutineList groupSetter={groupSetter} exercises={exercises} name={name} description={description} routineId={routineId}/> : <RoutineForm submitRoutine={submitRoutine} />}
-          
+            {listOpen ? <RoutineList playlist={playlist} addExercise={addExercise} groupSetter={groupSetter} exercises={exercises} name={name} description={description} routineId={routineId}/> : <RoutineForm submitRoutine={submitRoutine} />}
         </div>
     )
 }
