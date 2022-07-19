@@ -83,16 +83,37 @@ const CreateRoutine = () => {
             }
     }
 
-    const addExercise = (object) => {
-            const arr = new Array(...playlist)
+    const validateList = (oid, arr) => {
+        let ids = []
 
-            arr.push(object)
-            setPlaylist(arr)
+
+
+        for(let obj of arr){
+            ids.push(obj.id)
+        }
+        for(let id of ids){
+            if(oid === id){
+                console.log('exercise already added to list')
+                return true
+            }
+            
+        }
        
-            console.log(arr)           
     }
 
-    console.log(playlist)
+    const addExercise = (object) => {
+            const arr = new Array(...playlist)
+            if(validateList(object.id, arr) === true){
+                return
+            }else{
+                arr.push(object)
+                setPlaylist(arr)
+           
+                console.log('added') 
+            }
+             
+    }
+
     return(
         <div className="routinepage-container">
             {listOpen ? <RoutineList playlist={playlist} addExercise={addExercise} groupSetter={groupSetter} exercises={exercises} name={name} description={description} routineId={routineId}/> : <RoutineForm submitRoutine={submitRoutine} />}
